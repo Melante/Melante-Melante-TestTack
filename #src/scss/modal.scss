@@ -6,7 +6,7 @@
   height: 100%;
   background-color: rgba(0,0,0,0.7);
   text-align: center;
-  z-index:9999;
+  z-index:200;
   display: none;
   
 }
@@ -23,7 +23,8 @@
   display: inline-block;
   vertical-align: middle;
   position:relative;	
-  background: $white; 
+  background: $white;
+  z-index: 500;
 }
  .open{
 	display: block;
