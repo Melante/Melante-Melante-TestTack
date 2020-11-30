@@ -1,3 +1,15 @@
+//миксин будет поключать файлы шрифтов
+@mixin font($font_name, $file_name, $weight, $style) {
+   @font-face {
+        font-family: $font_name;
+        font-display: swap;
+        src: url("../fonts/#{$file_name}.woff") format("woff"), url("../fonts/#{$file_name}.woff2") format("woff2");
+        font-weight: #{$weight};
+        font-style: #{$style};
+   }
+}
+
+@import "fonts";
 @import 'contact';
 @import 'modal';
 $bac1: #1F3F68;
@@ -11,33 +23,43 @@ $white: white;
 
 %button{
   border: 1px solid white;
-  padding:  0 53px;
+  padding:  0 48px;
   margin-top: 60px;
   border-radius: 10px;
   background: $bac4;
   color: white;
+  border: none;
 }
 
+
+
 body{
-  width: 1366px;
-  font-family: Gilroy;
+  min-width: 1366px;
+  font-family: "Gilroy";
   font-size: 16px;
   line-height: 26px;
   color: $bac1;  
   margin: 0 auto;
-  padding: 1px; 
+  padding: 1px;
+
  
 }
 
 h1{
-  font-family: Galien;
+  font-family: "Galien";
   font-size: 62px;
-  line-height: 68px;  
+  line-height: 74px; 
+  letter-spacing: 0.04em; 
   color: $bac1;
+  width: 510px;
+  margin-top: 40px;
+    @media (max-width: $skw2) {
+      width: 90%;      
+    }
 }
 
 h2{
-  font-family: Galien;
+  font-family: "Galien";
   font-size: 44px;
   line-height: 74px;  
   letter-spacing: 0.04em;
@@ -56,7 +78,7 @@ h4{
 }
 
 p{
-    font-family: Gilroy;
+    font-family: "Gilroy";
     font-size: 16px;
     line-height: 26px;
     letter-spacing: 0.05em;    
@@ -69,7 +91,7 @@ p{
 }
 
 .header {
-  width: 1366px;
+  
   height:  768px;
   background-image: url(../image/header_back);
   background: linear-gradient(0deg, #98C3E8 8.84%, rgba(152, 195, 232, 0) 31.12%);
@@ -171,19 +193,12 @@ label{
     padding-top: 40px;
     @media (max-width: $skw2){
       text-align: center;
-    }
-   
+    }   
   }
-  &__title {
-    width: 560px;
-    @media (max-width: $skw2) {
-      width: 90%;      
-    }
-
-  }
+  &__title {}
   &__text {
     margin-top: -10px;
-    width: 400px;
+    width: 425px;
     opacity: 0.6;
     @media (max-width: $skw2) {
       width: 90%;       
@@ -191,10 +206,11 @@ label{
     }
   }
   &__button {
-    @extend %button;    
+    @extend %button; 
+
   }
   &__illustration {    
-    margin-left: -118px; 
+    margin-left: -70px; 
     margin-top: -8px; 
     width: 687px;
     @media(max-width: $skw2){
@@ -209,7 +225,7 @@ label{
 .info {
   display: flex;
   justify-content: space-between;
-  padding-top: 160px;
+  padding-top: 150px;
   margin: 0 auto;
   @media(max-width: $skw2){    
     display: flex;
@@ -231,8 +247,8 @@ label{
 .left {
   &__head {
     color: $bac2;
-    width: 358px;    
-    margin-bottom: 158px;
+    width: 400px;    
+    margin-bottom: 165px;
     letter-spacing: 0.05em;
     @media(max-width: $skw1){
       text-align: center;
@@ -284,6 +300,7 @@ label{
     }
   }
   &__text {
+    font-family: "Gilroy";
     color: $bac1;
     opacity: 0.6;
     @media(max-width: $skw1){
@@ -328,19 +345,24 @@ label{
   }
 }
 .right {
-  &_card {}
-  &__card {}
+  
+  &__card {
+    margin-top: 40px;
+  }
 }
 
-.client {
-  position: absolute;
+.client {  
+  position: relative;
   width: 1366px;
   height:1549px;
-  margin: 0 auto;
+   margin: 0 auto;
   background: $bac4;
   border-radius: 200px 0px 0px 0px;
   color: $white; 
   margin-top: 73px;
+  @media(max-width: $skw2){
+    height: 1650px;
+  }
   &__info {}
   &__logo {}
 }
@@ -352,7 +374,7 @@ label{
       text-align: center;
     }
   &__title {
-    width: 223px;
+    width: 230px;
     @media(max-width: $skw2){
       margin: 0 auto;      
     }
@@ -360,7 +382,7 @@ label{
   &__text {
     width: 540px;
     padding-top: 20px;
-    padding-left:  100px;
+    padding-left:  90px;
     letter-spacing: 0.05em;
     opacity: 0.6;
     @media(max-width: $skw2){
@@ -376,6 +398,7 @@ label{
      padding-top: 60px;
      padding-left: 15px;
   &__item {
+    font-family: "Gilroy";
     width: 225px;
     height: 128px;
     border: 1px solid $white;
@@ -419,15 +442,16 @@ label{
 
 //footer
 
+
+
 .footer {  
-  position: relative;
+  position: absolute;
   width: 1270px;
   background: $bac2;
-  border-radius: 0px 200px 0px 0px; 
-  left: 0;
-  bottom: -753px;  
+  border-radius: 0px 200px 0px 0px;    
   z-index: 5;
   color: $white;
+  bottom: 0;
    @media(max-width: $skw2){    
       width: 100%;
       margin: 0 auto;    
@@ -450,6 +474,7 @@ label{
     padding-bottom: 20px;
   }
   &__button{
+
     @extend %button;
     height: 56px; 
     width: 220px;
@@ -475,7 +500,7 @@ label{
       margin: 0 auto;      
     }   
   &__title {
-    width: 317px;
+    width: 330px;
      @media(max-width: $skw2){
       margin: 0 auto;
      }        
@@ -492,9 +517,10 @@ label{
 .contact {
   display: flex;
   justify-content: space-between;
-  margin-top: 96px;
-  width: 800px;
+  margin-top: 102px;
+  width: 740px;
   margin-left: 50px;
+  
   @media(max-width: $skw2){ 
       width: 100%;
       margin: 0 auto;   
@@ -547,7 +573,6 @@ label{
     @media(max-width: $skw2){
      font-size: 26px;
      } 
-
   }  
 }
 
@@ -561,24 +586,20 @@ label{
 
 .about-footer {
   margin-top: -30px;
-  &__title {
-    @media(max-width: $skw2){
-     font-size: 26px;
-     } 
-  }
+   @media(max-width: $skw2){
+    display: none;
+   }
+  &__title {}
   &__text>a {
     color: $white;
     text-decoration: none;
 
   }
-  &>p{
-    @media(max-width: $skw2){
-     font-size: 26px;
-     } 
-  }
+  &>p{  }
 }
 .soc-footer {
    margin-top: -30px;
+
   &__title {
     @media(max-width: $skw2){
      font-size: 26px;

@@ -25,18 +25,19 @@ $white: white;
 	background-image: url(../img/image/back-contact.png);	    
 	margin: 0 auto;
 	margin-top: 30px;
-	margin-bottom: 80px;
+	padding-top: 15px;
+	margin-bottom: 170px;
 	&__title {
-	    font-family: Gilroy;
-        font-size: 44px;
-        padding-top: 40px;
+	    font-family: "Gilroy";
+        font-size: 44px;        
         line-height: 74px;
         text-align: center;
         letter-spacing: 0.04em;
         color: $white;
+        margin-top: 40px;
 	}
 	&__text {
-	    font-family: Gilroy;
+	    font-family: "Gilroy";
         font-size: 20px;
         line-height: 30px;
         text-align: center;
@@ -46,15 +47,14 @@ $white: white;
         display: block;
         height: 100%;
         margin: 0 auto; 
-        margin-top: 16px;
-        padding-bottom: 60px;
+        margin-top: 20px;        
+        padding-bottom: 45px;
     }
 }
 
 .connect {
 	display: flex;
 	justify-content: space-between;
-	padding-top: 42px;
 	
 	@media(max-width: $skw2){
 		text-align: center;
@@ -64,15 +64,18 @@ $white: white;
         font-size: 26px;        
      } 
 	&__place {
+		margin-top: -50px;
 		width: 300px;
 		@media(max-width: $skw2){
 			width: 600px;
-		}
-		
+		}		
 	}
-	&__place>img{		
+	&__place>img{
+
 	}
-	&__message {}
+	&__message {
+
+	}
 }
 .conteiner {
 }
@@ -89,6 +92,7 @@ $white: white;
 		padding-top: 1px;
 	}
 	&__address>p{
+
 		@media(max-width: $skw2){
 			width: 500px;
 			font-size: 24px;
@@ -134,10 +138,9 @@ $white: white;
 
 }
 .form {
-
+     
 	&__title {
-		margin-left: 56px;
-        padding-top: 56px;
+		margin-left: 56px;       
         color: $bac1;
 	}
 	&__group {
@@ -153,7 +156,7 @@ $white: white;
 	    padding-top: 21px;
 	    padding-bottom: 21px; 
 	    display: block;
-	    font-family: Gilroy;
+	    font-family: "Gilroy";
         font-size: 16px;
         line-height: 30px;
         letter-spacing: 0.04em;
@@ -171,7 +174,7 @@ textarea{
 	padding-top: 21px;
 	padding-bottom: 21px; 
     display: block;
-    font-family: Gilroy;
+    font-family: "Gilroy";
     font-size: 16px;
     line-height: 30px;
     letter-spacing: 0.04em;
@@ -188,11 +191,14 @@ textarea{
 }
 .form-message {
 }
-.submit {
-	margin-left: 56px;
-	width: 80%;
+
+.submit-modal{
+	text-align: center;
+}
+
+.submit {	
 	padding: 23px 184px;
-	font-family: Gilroy;
+	font-family: "Gilroy";
     font-size: 16px;
     line-height: 26px;
     text-align: center;
@@ -213,8 +219,29 @@ textarea{
 	height: 480px;
 	margin: 0 auto;
 	margin-top: 120px;
-	margin-bottom: -660px;
-	
+	margin-bottom: -655px;
+}
+
+#footer-contact{
+	position: absolute;
+	 width: 1270px;
+	 height: 860px;
+	 margin: 0 auto;	 
+     left:43%;
+     transform:translate(-43%, 0);
+
+
+     background: $bac2;
+     border-radius: 0px 200px 0px 0px;    
+     z-index: 5;
+     color: $white;
+     margin-top: 700px;
+
+   @media(max-width: $skw2){    
+      width: 100%;
+      margin: 0 auto; 
+      margin-top: 700px;   
+    }  
 }
 
 
