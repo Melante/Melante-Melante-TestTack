@@ -242,8 +242,6 @@ textarea {
   vertical-align: middle;
   position: relative;
   background: white;
-  -webkit-box-shadow: 5px 20px 50px rgba(16, 112, 177, 0.2);
-          box-shadow: 5px 20px 50px rgba(16, 112, 177, 0.2);
 }
 
 .open {
