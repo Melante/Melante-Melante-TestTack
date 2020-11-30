@@ -225,7 +225,7 @@ textarea {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
   text-align: center;
-  z-index: 9999;
+  z-index: 200;
   display: none;
 }
 
@@ -242,6 +242,7 @@ textarea {
   vertical-align: middle;
   position: relative;
   background: white;
+  z-index: 500;
 }
 
 .open {
@@ -810,6 +811,15 @@ label {
   text-decoration: none;
 }
 
+@media (max-width: 1000px) {
+  #footer-contact {
+    position: relative;
+    margin: 0 auto;
+    margin-top: 700px;
+    padding-left: 100px;
+  }
+}
+
 @media (max-width: 770px) {
   .info {
     display: -webkit-box;
@@ -882,12 +892,6 @@ label {
 
   .message {
     margin-top: 20px;
-  }
-
-  #footer-contact {
-    width: 100%;
-    margin: 0 auto;
-    margin-top: 700px;
   }
 
   h1 {
