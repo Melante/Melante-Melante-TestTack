@@ -33,6 +33,7 @@ $white: white;
 
 
 
+
 body{
   min-width: 1366px;
   font-family: "Gilroy";
@@ -53,7 +54,7 @@ h1{
   color: $bac1;
   width: 510px;
   margin-top: 40px;
-    @media (max-width: $skw2) {
+    @media(max-width: $skw2) {
       width: 90%;      
     }
 }
