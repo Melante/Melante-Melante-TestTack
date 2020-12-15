@@ -857,6 +857,30 @@ label {
 }
 
 @media (max-width: 770px) {
+  .description__title {
+    margin-top: -10px;
+  }
+
+  .description__text {
+    padding-top: -10px;
+    font-size: 25px;
+  }
+
+  .burger__menu {
+    width: 40%;
+    margin-left: -220px;
+  }
+
+  .menu__item {
+    font-size: 25px;
+    padding-top: 10px;
+  }
+
+  .presentend__text {
+    width: 90%;
+    font-size: 25px;
+  }
+
   .info {
     display: -webkit-box;
     display: -webkit-flex;
@@ -890,11 +914,30 @@ label {
   }
 
   .card__title {
-    font-size: 26px;
+    font-size: 36px;
+    line-height: 45px;
   }
 
   .card__text {
-    font-size: 20px;
+    font-size: 30px;
+    line-height: 40px;
+  }
+
+  .arrow__text {
+    font-size: 30px;
+  }
+
+  .arrow__img {
+    padding-top: 35px;
+  }
+
+  .client-info__text {
+    font-size: 25px;
+  }
+
+  .footer-info__text > p {
+    margin: 0 auto;
+    font-size: 25px;
   }
 }
 
@@ -940,13 +983,12 @@ label {
     width: 80%;
   }
 
-  .presentend__rede {
-    text-align: center;
+  .burger__menu {
+    margin-left: -100px;
   }
 
-  .presentend__text {
-    width: 90%;
-    font-size: 20px;
+  .presentend__rede {
+    text-align: center;
   }
 
   .presentend__illustration {
@@ -985,12 +1027,14 @@ label {
   }
 
   .client-info__title {
+    width: 80%;
     margin: 0 auto;
   }
 
   .client-info__text {
+    width: 80%;
     margin: 0 auto;
-    font-size: 20px;
+    font-size: 30px;
   }
 
   .footer {
@@ -1020,11 +1064,6 @@ label {
 
   .footer-info__title {
     margin: 0 auto;
-  }
-
-  .footer-info__text > p {
-    margin: 0 auto;
-    font-size: 20px;
   }
 
   .contact {
