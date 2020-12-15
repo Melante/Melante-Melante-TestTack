@@ -35,6 +35,9 @@ $white: white;
         letter-spacing: 0.04em;
         color: $white;
         margin-top: 40px;
+        @media(max-width: $skw1){
+        	margin-top: -10px;
+        }
 	}
 	&__text {
 	    font-family: "Gilroy";
@@ -49,6 +52,11 @@ $white: white;
         margin: 0 auto; 
         margin-top: 20px;        
         padding-bottom: 45px;
+        @media(max-width: $skw1){
+        	padding-top: -10px;
+        	font-size: 25px;
+
+        }
     }
 }
 

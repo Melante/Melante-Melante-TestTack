@@ -11,15 +11,15 @@ let path={
 		html:  project_folder + "/",           //html сразу в корне
 		css:   project_folder + "/css/",       //сss файлы будут хранить в dist css
         js:    project_folder + "/js/",
-        img:    project_folder + "/img/", 
-       
+        img:    project_folder + "/img/",
+        fonts:    project_folder + "/fonts/",        
 	},
 	src:{                                    //папка с исходниками
 		html:  [source_folder + "/*.html", "!" + source_folder + "/_*.html"],          
 		css:   source_folder + "/scss/style.scss",       
         js:    source_folder + "/js/*.js",
         img:    source_folder + "/img/**/*.{jpg,png,svg,gif,ico,webp}",//использовать расширения которые используются. ** - -переходим в любые подпапки
-       
+        fonts:    source_folder + "/fonts/*.ttf",
 	},
 	watch:{                                    //указываются пути к файлам, которые надо слущать постоянно. Улавливать их изменения и что то сразу выпонять. Слушать надо в исходной папке                                    
 		html:  source_folder + "/**/*.html",   //** - переходим в любые подпапки *. - только определенное. В данном случае только html      
@@ -87,7 +87,7 @@ let { src, dest } = require('gulp'),  //папкам src и dist присваи�
         )
         .pipe(
             autoprefixer({
-                overrideBrowserslist:["last 5 versions"],
+                overrideBrowserslist:["last 25 versions"],
                 cascade: true
             })
         )
@@ -142,7 +142,65 @@ let { src, dest } = require('gulp'),  //папкам src и dist присваи�
         .pipe(browsersync.stream())
  }
 
+//функция для обработки шрифтов
+ function fonts(){
+    src(path.src.fonts)
+    .pipe(ttf2woff())
+    .pipe(dest(path.build.fonts));
+    return src(path.src.fonts)
+    .pipe(ttf2woff2())
+    .pipe(dest(path.build.fonts));
+ };
 
+  gulp.task('otf2ttf', function(){
+    return src([source_folder + '/fonts/*.otf'])
+      .pipe(fonter({
+        formats: ['ttf']
+      }))
+      .pipe(dest(source_folder + '/fonts/'));
+  })
+
+ gulp.task('svgSprite', function(){
+    return gulp.src([source_folder + '/iconsprite/*.svg'])
+    .pipe(svgSprite({
+        mode: {
+            stack: {
+                sprite: "../icons/icons.svg",//куда выводится файл
+                example:true
+            }
+        },
+    }
+    ))
+    .pipe(dest(path.build.img))
+ })
+
+//подключение стилей к css. Записывать имена файлов сконвертированных шрифтов
+function fontsStyle(params) {
+    let file_content = fs.readFileSync(source_folder + '/scss/fonts.scss');
+    if (file_content == '') {
+        fs.writeFile(source_folder + '/scss/fonts.scss', '', cb);
+        return fs.readdir(path.build.fonts, function (err, items) {
+            if (items) {
+                let c_fontname;
+                for (var i = 0; i < items.length; i++) {
+                    let fontname = items[i].split('.');
+                    fontname = fontname[0];
+                    if (c_fontname != fontname) {
+                        fs.appendFile(source_folder + '/scss/fonts.scss', '@include font("' + fontname + '", "' + fontname + '", "400", "normal");\r\n', cb);
+                    }
+                    c_fontname = fontname;
+                }
+            }
+        })
+    }
+}
+
+
+
+ //функция колбек
+ function cb(){
+
+ }
 
  //Функция для отслеживания действий
  function wathFiles(params){
@@ -158,11 +216,12 @@ function clean(params){
 }
 
 //проверяем работоспособность
-let build = gulp.series(clean,  gulp.parallel(js, css, html, images));
+let build = gulp.series(clean,  gulp.parallel(js, css, html, images, fonts), fontsStyle);
 let watch = gulp.parallel(build, wathFiles, browserSync); //сценарии выполненияя
 
 //подружим gulp с новыми переменными
-
+exports.fontsStyle = fontsStyle;
+exports.fonts = fonts;
 exports.images = images;
 exports.js = js;
 exports.css = css;
